@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
 
   # login後に転送する(=> tops_path)
   def after_sign_in_path_for(user)

@@ -38,6 +38,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def mail_sent
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -56,7 +59,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  # サインアップ時にメール送信した旨を表示したページに飛ぶ
+  def after_inactive_sign_up_path_for(resource)
+    users_mail_sent_path
+  end
 end
