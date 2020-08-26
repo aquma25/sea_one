@@ -65,6 +65,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ログイン機能の実装
 gem 'devise'
 
+# GoogleでのSNS認証
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 # ログイン機能の日本語化
 gem 'devise-i18n'
 gem 'devise-i18n-views'

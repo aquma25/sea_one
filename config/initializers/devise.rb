@@ -311,4 +311,13 @@ Devise.setup do |config|
 
   # Gmailアドレスの設定
   config.mailer_sender = ENV['MY_ADDRESS']
+
+  # GmailでのSNS認証設定
+  config.omniauth(
+    :google_oauth2,
+    ENV['GOOGLE_CLIENT_ID'],
+    ENV['GOOGLE_CLIENT_SECRET'],
+    scope: 'email',
+    redirect_uri: "http://" + ENV['HOST_NAME'] + "/users/auth/google_oauth2/callback"
+  )
 end
