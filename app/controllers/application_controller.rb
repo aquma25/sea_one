@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
 
   # login後に転送する(=> tops_path)
   def after_sign_in_path_for(user)
@@ -10,13 +11,13 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
-  protected # クラス内、同一パッケージ、サブクラスからアクセス可能
+  protected
 
+  # signup,update時にstrong_parameterを渡す
   def configure_permitted_parameters
-    # signup時にstrong_parameterを渡す
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    keys = [:nick_name, :email]
 
-    # update時にstrong_parameterを渡す
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: keys)
+    devise_parameter_sanitizer.permit(:account_update, keys: keys)
   end
 end
