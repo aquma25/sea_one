@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+CsvUpload.create!([
+  {
+    id: 1,
+    title: "にゃんくま",
+    content: "スタンプ"
+  },
+  {
+    id: 2,
+    title: "にゃんこ",
+    content: "くまに乗る"
+  },
+  {
+    id: 3,
+    title: "くま",
+    content: "にゃんこにタタタ"
+  }
+])

@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>項目</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @csv_uploads.each do |csv| %>
+      <tr>
+        <td><%= csv.id %></td>
+        <td><%= csv.title %></td>
+        <td><%= csv.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= form_tag csv_import_csv_uploads_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>

@@ -75,3 +75,6 @@ gem 'devise-i18n-views'
 
 # 環境変数設定
 gem 'dotenv-rails'
+
+# Excel, CSV, OpenOffice, GoogleSpreadSheetを開くことが可能
+gem 'roo'
