@@ -15,9 +15,7 @@ class ApplicationController < ActionController::Base
 
   # signup,update時にstrong_parameterを渡す
   def configure_permitted_parameters
-    keys = [:nick_name, :email]
-
-    devise_parameter_sanitizer.permit(:sign_up, keys: keys)
-    devise_parameter_sanitizer.permit(:account_update, keys: keys)
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:email])
   end
 end

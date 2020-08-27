@@ -13,38 +13,12 @@ class User < ApplicationRecord
 
   # static method
   class << self
-    def without_sns_data(auth)
+    # 渡されたuidをuser情報と紐付けて保存する
+    def from_omniauth(auth)
       user = User.where(email: auth.info.email).first
-
-      if user.present?
-        sns = SnsCredential.create(uid: auth.uid, provider: auth.provider, user_id: user.id)
-      else
-        user = User.new(nick_name: auth.info.name, email: auth.info.email,)
-        sns = SnsCredential.new(uid: auth.uid, provider: auth.provider)
-      end
-      { user: user, sns: sns }
-    end
-
-    def with_sns_data(auth, snscredential)
-      user = User.where(id: snscredential.user_id).first
-      user = User.new(nick_name: auth.info.name, email: auth.info.email) if user.blank?
-      { user: user }
-    end
-
-    def find_oauth(auth)
-      uid = auth.uid
-      provider = auth.provider
-      snscredential = SnsCredential.where(uid: uid, provider: provider).first
-
-      if snscredential.present?
-        user = with_sns_data(auth, snscredential)[:user]
-        sns = snscredential
-      else
-        user = without_sns_data(auth)[:user]
-        sns = without_sns_data(auth)[:sns]
-      end
-
-      { user: user, sns: sns }
+      SnsCredential.where(provider: auth.provider, uid: auth.uid, user_id: user.id).first_or_create
+      user
     end
   end
+
 end
