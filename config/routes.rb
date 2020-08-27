@@ -13,4 +13,9 @@ Rails.application.routes.draw do
 
   root to: "tops#index"
   resources :tops, only: [:index]
+
+  #=> post 'csv_uploads/csv_import', to: 'csv_uploads#csv_import'
+  resources :csv_uploads do
+    collection { post :csv_import }
+  end
 end
