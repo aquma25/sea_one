@@ -13,6 +13,7 @@
         <td><%= csv.id %></td>
         <td><%= csv.title %></td>
         <td><%= csv.content %></td>
+        <td><%= link_to "エクスポート", csv_export_csv_upload_path(id: csv.id) %></td>
       </tr>
     <% end %>
   </tbody>
