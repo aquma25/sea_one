@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   resources :tops, only: [:index]
 
   #=> post 'csv_uploads/csv_import', to: 'csv_uploads#csv_import'
+  # 下記２通りの書き方が使用出来る(collectionとmemberはpathにidを伴うか否か)
   resources :csv_uploads do
     collection { post :csv_import }
+    get 'csv_export', on: :member
   end
 end
