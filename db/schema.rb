@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_100111) do
 
   create_table "court_members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "play_ground_id", null: false
+    t.integer "court_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 2020_09_12_100111) do
     t.string "court_name"
     t.text "content"
     t.string "place"
-    t.integer "status"
+    t.string "status"
     t.boolean "release"
     t.string "nearest"
     t.time "start_time"
     t.time "end_time"
     t.integer "usage_fee"
     t.string "usage_week"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "lock_version"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_100111) do
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
     t.string "image"
-    t.integer "play_ground_id", null: false
+    t.integer "court_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_100111) do
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_100111) do
     t.string "prefecture"
     t.string "city"
     t.string "block"
-    t.integer "gender"
+    t.string "gender"
     t.string "phone_num"
     t.string "image"
     t.string "territory"
