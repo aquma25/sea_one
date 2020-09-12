@@ -3,7 +3,7 @@ class CreateImages < ActiveRecord::Migration[5.2]
     create_table :images do |t|
       t.string  :type
       t.string  :image
-      t.integer :play_ground_id, null: false
+      t.integer :court_id, null: false
 
       t.timestamps
     end

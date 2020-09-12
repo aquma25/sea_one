@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
   # DB Relation
+  has_many :court_members, dependent: :destroy
+  has_many :courts, through: :court_members
   has_many :sns_credentials, dependent: :destroy
 
   # Validation
