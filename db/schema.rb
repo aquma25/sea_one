@@ -10,11 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_104603) do
+ActiveRecord::Schema.define(version: 2020_09_12_083509) do
+
+  create_table "court_members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "play_ground_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "court_name"
+    t.text "content"
+    t.string "place"
+    t.string "status"
+    t.boolean "release"
+    t.string "nearest"
+    t.time "start_time"
+    t.time "end_time"
+    t.integer "usage_fee"
+    t.string "usage_week"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lock_version"
+  end
 
   create_table "csv_uploads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type"
+    t.string "image"
+    t.integer "play_ground_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +72,18 @@ ActiveRecord::Schema.define(version: 2020_08_27_104603) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "name"
+    t.string "nick_name", null: false
+    t.string "postcode"
+    t.string "prefecture"
+    t.string "city"
+    t.string "block"
+    t.string "gender"
+    t.string "phone_num"
+    t.string "image"
+    t.string "territory"
+    t.text "bio"
+    t.datetime "start_play_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

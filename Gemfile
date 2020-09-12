@@ -62,6 +62,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# GoogleMap
+gem 'geocoder'
+gem 'gmaps4rails'
+
 # ログイン機能の実装
 gem 'devise'
 
@@ -70,11 +74,19 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 # ログイン機能の日本語化
+gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 # 環境変数設定
 gem 'dotenv-rails'
 
+# 画像関係
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Excel, CSV, OpenOffice, GoogleSpreadSheetを開くことが可能
 gem 'roo'
+
+# Vue関係
+gem 'webpacker', github: 'rails/webpacker'
