@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # devise production時はhostを変更
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 || 5000 }
 
   # メール認証機能を使用出来るようにする
   config.action_mailer.raise_delivery_errors = true

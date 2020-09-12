@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # DB Relation
   has_many :sns_credentials, dependent: :destroy
 
+  # Validation
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i #半角英数字のみ
+  validates :nick_name, presence: true, uniqueness: true, length: { maximum: 8 }, format: { with: VALID_PASSWORD_REGEX }
+
   devise :database_authenticatable,                          # DBに保存されたパスワードが正しいかどうかの検証とを行う。またパスワードの暗号化も同時に行う。
          :registerable,                                      # User自身がアカウント登録、編集、削除することを許可する
          :recoverable,                                       # パスワードをリセットできるようにし、メールで通知する
@@ -16,7 +20,7 @@ class User < ApplicationRecord
     # 渡されたuidをuser情報と紐付けて保存する
     def from_omniauth(auth)
       user = User.where(email: auth.info.email).first
-      SnsCredential.where(provider: auth.provider, uid: auth.uid, user_id: user.id).first_or_create
+      SnsCredential.where(provider: auth.provider, uid: auth.uid, user_id: user&.id).first_or_create
       user
     end
   end
