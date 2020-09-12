@@ -69,6 +69,9 @@ gem 'gmaps4rails'
 # ログイン機能の実装
 gem 'devise'
 
+# 管理画面の実装
+gem 'activeadmin'
+
 # GoogleでのSNS認証
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
