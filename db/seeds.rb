@@ -7,20 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-CsvUpload.create!([
-  {
-    id: 1,
-    title: "にゃんくま",
-    content: "スタンプ"
-  },
-  {
-    id: 2,
-    title: "にゃんこ",
-    content: "くまに乗る"
-  },
-  {
-    id: 3,
-    title: "くま",
-    content: "にゃんこにタタタ"
-  }
-])
+AdminUser.create!(
+  email: ENV['MY_ADDRESS'],
+  password: ENV['MY_PASSWORD'],
+  password_confirmation: ENV['MY_PASSWORD']
+) if Rails.env.development?
